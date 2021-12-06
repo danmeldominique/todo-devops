@@ -27,7 +27,7 @@ jobs:
             cd frontend
             npm run test:unit
           environment:
-            JEST_JUNIT_OUTPUT: frontend/test-output
+            JEST_JUNIT_OUTPUT_DIR: frontend/test-output
       - store_test_results:
           path: frontend/test-output
 
