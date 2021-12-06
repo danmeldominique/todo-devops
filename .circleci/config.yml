@@ -12,8 +12,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:lts
-    environment:
-      JEST_JUNIT_OUTPUT_DIR: frontend/test-output
     steps:
       - checkout
       - install_dependencies
@@ -27,7 +25,9 @@ jobs:
           command: |
             mkdir -p frontend/test-output
             cd frontend
-            JEST_JUNIT_OUTPUT_DIR 'frontend/test-output' jest --ci --reporters=default --reporters=jest-junit
+            jest --ci --reporters=default --reporters=jest-junit
+          environment:
+            JEST_JUNIT_OUTPUT: frontend/test-output
       - store_test_results:
           path: frontend/test-output
 
