@@ -27,7 +27,7 @@ jobs:
           command: |
             mkdir -p frontend/test-output
             cd frontend
-            npm run test:unit
+            JEST_JUNIT_OUTPUT_DIR 'frontend/test-output' jest --ci --reporters=default --reporters=jest-junit
       - store_test_results:
           path: frontend/test-output
 
