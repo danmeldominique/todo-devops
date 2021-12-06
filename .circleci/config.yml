@@ -13,7 +13,7 @@ jobs:
     docker:
       - image: circleci/node:lts
     environment:
-      JEST_JUNIT_OUTPUT_DIR: test-output
+      JEST_JUNIT_OUTPUT_DIR: frontend/test-output
     steps:
       - checkout
       - install_dependencies
@@ -25,11 +25,10 @@ jobs:
       - run:
           name: Run frontend unit tests
           command: |
-            mkdir -p test-output
-            cd frontend
+            mkdir -p frontend/test-output
             npm run unit:test
       - store_test_results:
-          path: test-output
+          path: frontend/test-output
 
 workflows:
   version: 2
