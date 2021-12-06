@@ -26,6 +26,7 @@ jobs:
           name: Run frontend unit tests
           command: |
             mkdir -p frontend/test-output
+            cd frontend
             npm run unit:test
       - store_test_results:
           path: frontend/test-output
