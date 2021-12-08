@@ -1,11 +1,12 @@
 # Set base docker image
-FROM node:17.2-alpine
+FROM node:16.3-alpine
 # Set up workspace on docker container
 WORKDIR /app
 # Copy all files to docker container
 COPY . .
 # Install dependencies
-RUN [ "npm","run", "build" ]
+RUN [ "npm", "install"]
 # Expose app port
 EXPOSE 8080
+RUN [ "npm", "install"]
 CMD [ "npm","run","serve" ]

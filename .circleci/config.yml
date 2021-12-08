@@ -9,7 +9,7 @@ commands:
             npm install
 
 jobs:
-  build:
+  unit-test:
     docker:
       - image: circleci/node:lts
     environment:
@@ -30,9 +30,20 @@ jobs:
             JEST_JUNIT_OUTPUT_DIR=$JEST_JUNIT_OUTPUT_DIR npm run test:unit
       - store_test_results:
           path: frontend/test-output
+  integration-test:
+    docker:
+      - image: circleci/node:lts
+      - image: circleci/postgres:lts
+    environment:
+      x: x
+    steps:
+      - checkout
+      
+
+
 
 workflows:
   version: 2
   pipeline:
     jobs:
-      - build
+      - test
