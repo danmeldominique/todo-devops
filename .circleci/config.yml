@@ -12,6 +12,8 @@ jobs:
   build:
     docker:
       - image: circleci/node:lts
+    environment:
+          JEST_JUNIT_OUTPUT_DIR: test-output
     steps:
       - checkout
       - install_dependencies
@@ -25,9 +27,7 @@ jobs:
           command: |
             mkdir -p frontend/test-output
             cd frontend
-            npm run test:unit
-          environment:
-            JEST_JUNIT_OUTPUT_DIR: frontend/test-output
+            JEST_JUNIT_OUTPUT_DIR=$JEST_JUNIT_OUTPUT_DIR npm run test:unit
       - store_test_results:
           path: frontend/test-output
 
